@@ -1,0 +1,39 @@
+{{!< default}}
+
+{{! The main content area on the homepage }}
+<main class="content container" role="main">
+
+  <header class="tag-archive-header">
+    <h1>{{tag.name}}</h1>
+  </header>
+
+  {{#foreach posts}}
+
+  <div class="row">
+    <article class="{{post_class}}">
+      <div class="col-md-2">
+        <span class="post-meta post-date">
+          <time datetime="{{date format='YYYY-MM-DD'}}">{{date format="DD MMM YYYY"}}</time>
+        </span>
+      </div>
+      <div class="col-md-9 post-wrapper">
+        <header class="post-header">
+          <h2 class="post-title"><a href="{{url}}">{{{title}}}</a></h2>
+        </header>
+        <section class="post-excerpt">
+          <p>{{excerpt}}&hellip; <a class="read-more" href="{{url}}">&raquo;</a></p>
+        </section>
+
+        {{> share_links }}
+      </div>
+    </article>
+  </div>
+
+  {{/foreach}}
+
+  {{!! After all the posts, we have the previous/next pagination links }}
+  <div class="row">
+    <div class="col-md-9 col-md-offset-2">{{pagination}}</div>
+  </div>
+
+</main>
